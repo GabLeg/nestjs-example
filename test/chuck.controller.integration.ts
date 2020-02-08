@@ -1,0 +1,16 @@
+import { Test, TestingModule } from "@nestjs/testing";
+import { AppModule } from "../src/app.module";
+
+describe("ChuckController", () => {
+    let app;
+
+    beforeEach(async () => {
+        const moduleFixture: TestingModule = await Test.createTestingModule({
+            imports: [AppModule],
+        }).compile();
+
+        app = moduleFixture.createNestApplication();
+        await app.init();
+    });
+
+});
