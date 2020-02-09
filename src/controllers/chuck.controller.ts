@@ -2,6 +2,7 @@ import { Controller, Get, HttpCode, HttpStatus, UseFilters } from "@nestjs/commo
 import { ChuckControllerExceptionFilter } from "./exceptions/exception-filters";
 import { ChuckJoke } from "../domain/chuck";
 import { ChuckService } from "../services";
+import { ApiResponse } from "@nestjs/swagger";
 
 @Controller("/chuck")
 @UseFilters(ChuckControllerExceptionFilter)
@@ -11,6 +12,7 @@ export class ChuckController {
 
     @Get()
     @HttpCode(HttpStatus.OK)
+    @ApiResponse({type: ChuckJoke})
     async getChuckJoke(): Promise<ChuckJoke> {
         return this.chuckService.getJoke();
     }

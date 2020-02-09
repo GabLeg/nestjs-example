@@ -1,9 +1,9 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { AppModule } from "../src/app.module";
 import * as request from "supertest";
-import nock = require("nock");
 import { ChuckJokeDto } from "../src/rest-clients/dto";
 import { ChuckJoke } from "../src/domain/chuck";
+import nock = require("nock");
 
 const CHUCK_JOKE_DTO: ChuckJokeDto = {
     value: {
@@ -16,9 +16,9 @@ const CHUCK_JOKE_DTO: ChuckJokeDto = {
 describe("ChuckController", () => {
     let app;
 
-    beforeEach(async () => {
+    beforeAll(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
-            imports: [AppModule],
+            imports: [AppModule]
         }).compile();
         process.env.CHUCK_JOKES_URL = "http://patate.com";
 
@@ -39,6 +39,16 @@ describe("ChuckController", () => {
             .get("/chuck")
             .expect(200)
             .expect(expectedValue);
+        });
+
+        it("should return http 500 when problem with external service", () => {
+            nock("http://patate.com")
+            .get("/jokes/random")
+            .reply(503);
+
+            return request(app.getHttpServer())
+            .get("/chuck")
+            .expect(500);
         });
     });
 });

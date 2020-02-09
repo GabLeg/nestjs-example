@@ -6,9 +6,9 @@ import { GlobalExceptionFilter } from "./controllers/exceptions/exception-filter
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
-    loadSwagger(app);
     app.setGlobalPrefix("api/v1");
     app.useGlobalFilters(new GlobalExceptionFilter());
+    loadSwagger(app);
     await app.listen(8080);
 }
 
@@ -21,5 +21,5 @@ function loadSwagger(app: INestApplication) {
         .setVersion("1.0")
         .build();
     const document = SwaggerModule.createDocument(app, options);
-    SwaggerModule.setup("/swagger-ui", app, document);
+    SwaggerModule.setup("api/v1/swagger-ui", app, document);
 }
