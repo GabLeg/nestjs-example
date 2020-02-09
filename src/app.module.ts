@@ -1,10 +1,12 @@
-import { Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
+import { HttpModule, Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
+import { ChuckJokesClient } from "./rest-clients";
+import { ChuckService } from "./services";
+import { ChuckController, HealthCheckController } from "./controllers";
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ConfigModule.forRoot(), HttpModule],
+  controllers: [ChuckController, HealthCheckController],
+  providers: [ChuckService, ChuckJokesClient],
 })
 export class AppModule {}

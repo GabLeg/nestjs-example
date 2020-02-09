@@ -8,11 +8,13 @@
     "quotemark": [true, "double"],
     "member-access": [false],
     "ordered-imports": [false],
-    "max-line-length": [true, 150],
+    "max-line-length": [true, 120],
     "member-ordering": [false],
     "interface-name": [false],
     "arrow-parens": false,
-    "object-literal-sort-keys": false
+    "trailing-comma": false,
+    "object-literal-sort-keys": false,
+    "no-unused-variable": true
   },
   "rulesDirectory": []
 }
