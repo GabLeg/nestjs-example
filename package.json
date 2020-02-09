@@ -24,6 +24,7 @@
     "@nestjs/platform-express": "6.11.5",
     "@nestjs/swagger": "4.2.3",
     "@types/lodash": "4.14.149",
+    "husky": "4.2.1",
     "lodash": "4.17.15",
     "reflect-metadata": "0.1.12",
     "rimraf": "2.6.2",
@@ -61,5 +62,11 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test:cov"
+    }
   }
 }

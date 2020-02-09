@@ -1,7 +1,7 @@
 import { Controller, Get, HttpCode, HttpStatus, UseFilters } from "@nestjs/common";
 import { ChuckControllerExceptionFilter } from "./exceptions/exception-filters";
 import { ChuckJoke } from "../domain/chuck";
-import { ChuckService } from "../services/chuck.service";
+import { ChuckService } from "../services";
 
 @Controller("/chuck")
 @UseFilters(ChuckControllerExceptionFilter)
