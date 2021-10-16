@@ -1,6 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import { INestApplication, Logger, LoggerService } from "@nestjs/common";
+import { INestApplication, Logger } from "@nestjs/common";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { GlobalExceptionFilter } from "./controllers/exceptions/exception-filters";
 import { ConfigService } from "@nestjs/config";

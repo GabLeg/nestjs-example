@@ -1,9 +1,10 @@
-import { HttpService, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { ChuckJoke } from "../domain/chuck";
 import { ConfigService } from "@nestjs/config";
 import { ChuckNorrisException } from "../controllers/exceptions";
 import { dtoToChuckJoke } from "./mappers";
 import { ChuckJokeDto } from "./dto";
+import { HttpService } from "@nestjs/axios";
 
 @Injectable()
 export class ChuckJokesClient {

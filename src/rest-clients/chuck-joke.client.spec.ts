@@ -1,10 +1,10 @@
-import { HttpService } from "@nestjs/common";
 import { instance, mock, when } from "ts-mockito";
 import { ChuckJokesClient } from "./chuck-jokes.client";
 import { ConfigService } from "@nestjs/config";
 import { ChuckJokeDto } from "./dto";
 import { of } from "rxjs";
 import { AxiosResponse } from "axios";
+import { HttpService } from "@nestjs/axios";
 
 const CHUCK_JOKE_DTO: ChuckJokeDto = {
     type: "joke",
@@ -30,6 +30,7 @@ describe("ChuckJokeClient", () => {
     describe("getJoke", () => {
         it("should return chuck joke", async () => {
             const axiosResponse: AxiosResponse = createAxiosResponse(CHUCK_JOKE_DTO, 200);
+            // @ts-ignore
             when(httpServiceMock.get("http://localhost/jokes/random")).thenReturn(of(axiosResponse));
 
             const result = await chuckJokeClient.getJoke();
