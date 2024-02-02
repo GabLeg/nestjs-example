@@ -17,7 +17,7 @@ export class ChuckJokesClient {
   async getJoke(): Promise<ChuckJoke> {
     try {
       return firstValueFrom(this.httpService.get<ChuckJokeDto>(`${this.configService.get("CHUCK_JOKES_URL")}/jokes/random`)
-          .pipe(map(response => dtoToChuckJoke(response.data))))
+                                .pipe(map(response => dtoToChuckJoke(response.data))))
     } catch (error) {
       throw new ChuckNorrisException()
     }

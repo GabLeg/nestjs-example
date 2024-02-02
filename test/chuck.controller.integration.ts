@@ -36,7 +36,7 @@ describe("ChuckController", () => {
             .reply(200, CHUCK_JOKE_DTO);
 
             return request(app.getHttpServer())
-            .get("/chuck")
+            .get("/api/v1/chuck")
             .expect(200)
             .expect(expectedValue);
         });
@@ -47,7 +47,7 @@ describe("ChuckController", () => {
             .reply(503);
 
             return request(app.getHttpServer())
-            .get("/chuck")
+            .get("/api/v1/chuck")
             .expect(500);
         });
     });
