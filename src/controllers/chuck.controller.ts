@@ -4,7 +4,7 @@ import { ChuckJoke } from "../domain/chuck";
 import { ChuckService } from "../services";
 import { ApiResponse } from "@nestjs/swagger";
 
-@Controller("/chuck")
+@Controller("api/v1/chuck")
 @UseFilters(ChuckControllerExceptionFilter)
 export class ChuckController {
 
